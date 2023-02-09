@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19574" systemVersion="20G730" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Book" representedClassName="Book" syncable="YES">
+        <attribute name="author" attributeType="String"/>
+        <attribute name="bookName" attributeType="String"/>
+        <attribute name="booksDescription" attributeType="String"/>
+        <attribute name="image" attributeType="Binary"/>
+        <attribute name="publisher" attributeType="String"/>
+        <attribute name="rank" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="category" maxCount="1" deletionRule="Cascade" destinationEntity="Category" inverseName="books" inverseEntity="Category"/>
+        <relationship name="link" toMany="YES" deletionRule="Cascade" destinationEntity="Link" inverseName="book" inverseEntity="Link"/>
+    </entity>
+    <entity name="Category" representedClassName="Category" syncable="YES">
+        <attribute name="listNameEncoded" attributeType="String"/>
+        <attribute name="name" attributeType="String"/>
+        <attribute name="newestPublishedDate" attributeType="String"/>
+        <relationship name="books" toMany="YES" deletionRule="Cascade" destinationEntity="Book" inverseName="category" inverseEntity="Book"/>
+    </entity>
+    <entity name="Link" representedClassName="Link" syncable="YES">
+        <attribute name="link" attributeType="String"/>
+        <attribute name="name" attributeType="String"/>
+        <relationship name="book" maxCount="1" deletionRule="Nullify" destinationEntity="Book" inverseName="link" inverseEntity="Book"/>
+    </entity>
+    <elements>
+        <element name="Book" positionX="-54" positionY="-9" width="128" height="149"/>
+        <element name="Category" positionX="-63" positionY="-18" width="128" height="89"/>
+        <element name="Link" positionX="-36" positionY="0" width="128" height="74"/>
+    </elements>
+</model>
