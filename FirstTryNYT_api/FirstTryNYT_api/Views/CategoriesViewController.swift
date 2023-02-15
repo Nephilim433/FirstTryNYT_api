@@ -35,15 +35,9 @@ class CategoriesViewController: UIViewController {
         view.backgroundColor = .systemBackground
         updateDataSource()
         callToUpdateUI()
-        //MARK: - uncomment this to clear core data
-//        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(didTapDelete))
+
 
     }
-
-    @objc private func didTapDelete() {
-        DatabaseHelper.shared.clearDatabase()
-    }
-
 
     private func callToUpdateUI() {
         guard let viewModel = categoriesViewModel else { return }
@@ -77,7 +71,6 @@ extension CategoriesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         guard let viewModel = categoriesViewModel else { return }
-        //cordinator.openBooksWith
         viewModel.goToBookPage(index: indexPath.row)
     }
 }

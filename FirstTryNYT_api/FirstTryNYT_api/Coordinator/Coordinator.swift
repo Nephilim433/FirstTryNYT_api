@@ -18,8 +18,6 @@ protocol Coordinator {
 }
 
 class AppCoordinator: Coordinator {
-//    var parentCoordinator: Coordinator?
-//    var childCoordinators: [Coordinator] = []
     var navigationController: UINavigationController
 
     init(navCon: UINavigationController) {

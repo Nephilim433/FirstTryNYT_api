@@ -25,7 +25,7 @@ class BooksViewController: UIViewController {
         super.viewDidLoad()
         view.addSubview(tableView)
         view.backgroundColor = .systemBackground
-        title = "Books"
+        title = ("BooksViewController.title")~
         callToUpdateUI()
         updateDataSource()
     }

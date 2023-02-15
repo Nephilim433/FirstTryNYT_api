@@ -10,7 +10,6 @@ import Foundation
 class APIService {
 
     static let shared = APIService()
-//    private init() { }
 
     struct Constants {
         static let baseAPIURL = "https://api.spotify.com/v1"
@@ -22,6 +21,11 @@ class APIService {
         case noData
         case decodingError
     }
+    let decoder : JSONDecoder = {
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .iso8601
+        return decoder
+    }()
 
 
     public func fetchCategory(category:String ,completion: @escaping (Result<[BookCellModel], NetworkError>) -> Void) {
@@ -36,9 +40,7 @@ class APIService {
             guard let data = data, error == nil else {
                 return completion(.failure(.noData))
             }
-            let decoder = JSONDecoder()
-            decoder.dateDecodingStrategy = .iso8601
-            let response = try? decoder.decode(CategoryResponse.self, from: data)
+            let response = try? self.decoder.decode(CategoryResponse.self, from: data)
 
             if let response = response, let books = response.results.books {
 
@@ -69,7 +71,6 @@ class APIService {
         }
     }
 
-    //this is the first request you execute to get all names of books categories
     func fetchCategoryItems(completion: @escaping (Result<NamesResponse, NetworkError>) -> Void) {
         guard let url = createURL() else {
             return completion(.failure(.badURL))
@@ -79,9 +80,7 @@ class APIService {
             guard let data = data, error == nil else {
                 return completion(.failure(.noData))
             }
-            let decoder = JSONDecoder()
-            decoder.dateDecodingStrategy = .iso8601
-            let response = try? decoder.decode(NamesResponse.self, from: data)
+            let response = try? self.decoder.decode(NamesResponse.self, from: data)
             if let response = response {
                 print("response response")
                 completion(.success(response))

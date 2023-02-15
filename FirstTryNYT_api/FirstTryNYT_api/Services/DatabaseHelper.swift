@@ -90,7 +90,6 @@ class DatabaseHelper {
 
             if newCategoryDate > cdCategoryDate {
                 print("core data is outdated")
-                //delete category with ** name
                 delete(model: item)
                 return false
             } else if newCategoryDate == cdCategoryDate {

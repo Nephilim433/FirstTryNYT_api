@@ -29,6 +29,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window!.rootViewController = navigationCon
         window!.makeKeyAndVisible()
 
+        print(NSLocalizedString("BooksViewController.title", comment: ""))
+
         return true
     }
 }

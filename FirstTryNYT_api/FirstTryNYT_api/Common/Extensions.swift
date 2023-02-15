@@ -46,3 +46,8 @@ extension UIView {
     }
 
 }
+
+postfix operator ~
+postfix func ~ (string: String) -> String {
+    return NSLocalizedString(string, comment: "")
+}
