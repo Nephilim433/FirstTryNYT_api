@@ -1,0 +1,13 @@
+/* 
+  Localizable.strings
+  FirstTryNYT_api
+
+  Created by Nephilim  on 2/15/23.
+  
+*/
+
+
+"welcome_screen_title" = "Welcome"
+"login_button" = "Log In"
+
+"BooksViewController.title" = "Books"
